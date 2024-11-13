@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import { loginUser } from '../services/api';
+import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../services/api';
 
-const Login = ({ onLogin }) => {
+const Signup = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -14,16 +15,13 @@ const Login = ({ onLogin }) => {
     setError(null);
 
     try {
-      const data = await loginUser(email, password);
+      const data = await registerUser({ username, email, password });
       if (data) {
-        localStorage.setItem('userId', data.id);
-        // localStorage.setItem("user", JSON.stringify(data));
+        navigate('/login'); // Redirect to login after successful signup
       }
-      onLogin(data);
-      navigate('/');
     } catch (err) {
-      setError('An error occurred during login.');
-      console.error('Login failed:', err);
+      setError('An error occurred during signup.');
+      console.error('Signup failed:', err);
     }
   };
 
@@ -31,9 +29,18 @@ const Login = ({ onLogin }) => {
     <Container className="d-flex align-items-center justify-content-center min-vh-100">
       <Row className="w-100 justify-content-center">
         <Col xs={12} sm={8} md={6} lg={4}>
-          <h2 className="text-center mb-4">Login</h2>
+          <h2 className="text-center mb-4">Sign Up</h2>
           {error && <p className="text-danger text-center">{error}</p>}
           <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formUsername" className="mb-3">
+              <Form.Control
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </Form.Group>
             <Form.Group controlId="formEmail" className="mb-3">
               <Form.Control
                 type="email"
@@ -53,11 +60,11 @@ const Login = ({ onLogin }) => {
               />
             </Form.Group>
             <Button variant="primary" type="submit" className="w-100">
-              Login
+              Sign Up
             </Button>
           </Form>
           <p className="text-center mt-3">
-            Don't have an account? <Link to="/signup">Sign Up</Link>
+            Already have an account? <a href="/login">Log in</a>
           </p>
         </Col>
       </Row>
@@ -65,4 +72,4 @@ const Login = ({ onLogin }) => {
   );
 };
 
-export default Login;
+export default Signup;

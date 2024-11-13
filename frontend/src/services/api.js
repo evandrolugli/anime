@@ -15,6 +15,29 @@ export const loginUser = async (email, password) => {
   return response.data;
 };
 
+export const registerUser = async (userData) => {
+  const response = await axios.post('http://localhost:3001/api/users/register', userData);
+  return response.data;
+};
+
+export const deleteAnime = async (id) => {
+  try {
+    await axios.delete(`http://localhost:3001/api/animes/${id}`);
+  } catch (error) {
+    console.error('Error deleting anime:', error);
+    throw error;
+  }
+};
+
+export const fetchAnimeById = async (id) => {
+  const response = await axios.get(`http://localhost:3001/api/animes/${id}`);
+  return response.data;
+};
+
+export const updateAnime = async (id, updatedAnime) => {
+  await axios.put(`http://localhost:3001/api/animes/${id}`, updatedAnime);
+};
+
 export const postReview = async (animeId, userId, reviewText, rating) => {
   try {
     const response = await axios.post(`http://localhost:3001/api/animes/${animeId}/reviews`, {
