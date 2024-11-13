@@ -1,0 +1,45 @@
+### run database (populate database)
+go to animes-review/backend (terminal)
+>> npm run seed
+
+### run backend
+go to animes-review/backend (terminal)
+>> npm run dev
+
+### run frontend
+go to animes-review/frontend (terminal)
+>> npm start
+
+Install - Backend (animes-review/backend)
+>> npm install express
+>> npm install mysql2
+>> npm install cors
+
+Install - Frontend (animes-review/frontend)
+>> npm install axios (for api requests)
+>> npm install react-router-dom
+>> npm install bootstrap
+
+
+### Routes:
+>> user : login
+>> anime : get all
+>> anime : create an anime
+>> anime-reviews : get all reviews by animeId
+>> anime-reviews : create a review
+
+
+
+To Do:
+- delete anime
+- edit anime
+- fix average
+
+To Do:
+- run the project (set up database, run seed)
+- understand the project
+- test in postman
+
+Possible questions? 
+- backend: 
+- frontend: 
