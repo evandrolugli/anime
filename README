@@ -14,12 +14,13 @@ Install - Backend (animes-review/backend)
 >> npm install express
 >> npm install mysql2
 >> npm install cors
+>> npm install nodemon
 
 Install - Frontend (animes-review/frontend)
 >> npm install axios (for api requests)
 >> npm install react-router-dom
 >> npm install bootstrap
-
+>> npm install
 
 ### Routes:
 >> user : login
@@ -29,17 +30,9 @@ Install - Frontend (animes-review/frontend)
 >> anime-reviews : create a review
 
 
-
 To Do:
-- delete anime
-- edit anime
-- fix average
-
-To Do:
-- run the project (set up database, run seed)
-- understand the project
-- test in postman
-
-Possible questions? 
-- backend: 
-- frontend: 
+- footer
+- starts (rating)
+- fix average review
+- add anime images
+- show username instead of userId
